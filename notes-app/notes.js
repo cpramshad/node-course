@@ -3,6 +3,7 @@ const fs = require('fs');
 const getNotes = () => 'My notes!';
 
 const addNotes = (title, body) => {
+    debugger;
     const notes = loadNotes();
 
     const duplicateNotes = notes.filter(note => note.title === title);
@@ -33,8 +34,20 @@ const loadNotes = () => {
     }
 }
 
+// Remove notes
+const removeNotes = (title) => {
+    const notes = loadNotes();
+
+    const filteredNotes = notes.filter(note => note.title !== title);
+    
+
+    saveNotes(filteredNotes);
+
+} 
+
 
 module.exports = {
     getNotes: getNotes,
-    addNotes: addNotes
+    addNotes: addNotes,
+    removeNotes: removeNotes
 }
